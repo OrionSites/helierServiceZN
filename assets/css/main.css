@@ -247,8 +247,8 @@ h6 {
   margin-right: 8px;
 }
 
-.header .logo h1 {
-  font-size: 30px;
+.header .logo .sitename {
+  font-size: 1.3rem;
   margin: 0;
   font-weight: 700;
   color: var(--heading-color);
