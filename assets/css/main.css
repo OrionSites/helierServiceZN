@@ -540,6 +540,11 @@ h6 {
   position: relative;
 }
 
+.footer{
+  background-color: #1a4d3c;
+  color: white !important;
+}
+
 .footer .footer-newsletter {
   background-color: color-mix(in srgb, var(--default-color), transparent 97%);
   padding: 50px 0;
@@ -831,6 +836,13 @@ section,
   position: relative;
 }
 
+.section-subtitle{
+  margin: 0;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 56px;
+}
+
 .section-title h2 {
   font-size: 32px;
   font-weight: 700;
@@ -918,7 +930,7 @@ section,
 }
 
 .hero .btn-phone {
-  background: #0a8947;
+  background: #1a4d3c;
 }
 
 .hero .btn-phone:hover {
@@ -1079,9 +1091,13 @@ section,
 /*--------------------------------------------------------------
 # About Section
 --------------------------------------------------------------*/
-.about .content h3 {
-  font-size: 1.75rem;
-  font-weight: 700;
+
+.about h5{
+  font-size: 17px;
+}
+
+.about p {
+  font-size: 16px !important;
 }
 
 .about .content ul {
@@ -1542,6 +1558,25 @@ section,
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
   padding: 30px;
 }
+
+.service-item p {
+  color: var(--accent-color);
+  font-weight: 700;
+  font-size: 17px;
+}
+
+.contact .btn-phone {
+  background: #1a4d3c;
+}
+
+.contact .btn-phone:hover {
+  background: #087d3f;
+}
+
+.service-item i {
+  color: var(--accent-color) !important;
+}
+
 
 @media (max-width: 575px) {
   .contact .info-wrap {
