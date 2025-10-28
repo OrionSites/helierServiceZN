@@ -235,6 +235,7 @@ h6 {
   padding: 15px 0;
   transition: all 0.5s;
   z-index: 997;
+  box-shadow: 0px 0 18px rgba(0, 0, 0, 0.1);
 }
 
 .header .logo {
@@ -284,10 +285,6 @@ h6 {
   .header .navmenu.order-2 {
     order: 3;
   }
-}
-
-.scrolled .header {
-  box-shadow: 0px 0 18px rgba(0, 0, 0, 0.1);
 }
 
 /*--------------------------------------------------------------
@@ -899,12 +896,12 @@ section,
       radial-gradient(
         circle at 0% 0%, 
         rgba(16, 188, 105, 0.25) 0%,
-        rgba(255, 255, 255, 0) 45%
+        rgba(255, 255, 255, 0) 30%
       ),
       radial-gradient(
         circle at 100% 100%, 
         rgba(16, 188, 105, 0.2) 0%,
-        rgba(255, 255, 255, 0) 30%
+        rgba(255, 255, 255, 0) 45%
       );
   background-repeat: no-repeat;
   background-size: 85% 85%, 50% 50%;
