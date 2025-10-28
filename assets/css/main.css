@@ -893,6 +893,22 @@ section,
   padding: 120px 0 60px 0;
   display: flex;
   align-items: center;
+
+  background-color: #ffffff;
+  background-image: 
+      radial-gradient(
+        circle at 0% 0%, 
+        rgba(16, 188, 105, 0.25) 0%,
+        rgba(255, 255, 255, 0) 45%
+      ),
+      radial-gradient(
+        circle at 100% 100%, 
+        rgba(16, 188, 105, 0.2) 0%,
+        rgba(255, 255, 255, 0) 30%
+      );
+  background-repeat: no-repeat;
+  background-size: 85% 85%, 50% 50%;
+  background-position: left top, right bottom;
 }
 
 .hero h1 {
@@ -1132,6 +1148,7 @@ section,
 --------------------------------------------------------------*/
 .stats {
   padding-top: 0;
+  background-color: transparent;
 }
 
 .stats .stats-item {
@@ -1865,3 +1882,4 @@ section,
   margin-right: 8px;
   color: var(--accent-color);
 }
+
