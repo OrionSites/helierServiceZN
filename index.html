@@ -209,29 +209,177 @@
 
       <!-- Section Title -->
       <div class="container text-center" data-aos="fade-up">
-        <h3 class="text-black section-subtitle">Baterias de <span style="color: #10bc69;">Alta Perfomance</span></h3>
-        <p style="color: 
-        color-mix(in srgb, var(--default-color), transparent 30%);">
-          Oferecemos as melhores soluções em baterias automotivas com tecnologia avançada
-        </p>
-      </div><!-- End Section Title -->
+  <h3 class="text-black section-subtitle">Baterias de <span style="color: #10bc69;">Alta Performance</span></h3>
+  <p style="color: color-mix(in srgb, var(--default-color), transparent 30%);">
+    Oferecemos as melhores soluções em baterias automotivas com tecnologia avançada
+  </p>
+</div>
 
-      <div class="col-md-6 col-lg-5 m-auto" data-aos="fade-up" data-aos-delay="100">
-        <div class="card border-0 shadow-sm rounded-4 h-100 position-relative">
-          <div class="card-body text-center p-4">
-            <div class="d-flex justify-content-center align-items-center mb-3">
-              <div class="bg-success bg-opacity-10 rounded-3 d-flex justify-content-center align-items-center" style="width:64px; height:64px;">
-                <i class="bi bi-search text-success fs-3"></i>
-              </div>
-            </div>
-            <h4 class="fw-bold mb-1 text-black">Encontre a Bateria Ideal</h4>
-            <p class="text-muted mb-4">Selecione seu veículo e descubra a bateria perfeita</p>
-            
-            
-  
-          </div>
+<div class="col-md-6 col-lg-5 m-auto" data-aos="fade-up" data-aos-delay="100">
+  <div class="card border-0 shadow-sm rounded-4 h-100 position-relative">
+    <div class="card-body text-center p-4">
+      <div class="d-flex justify-content-center align-items-center mb-3">
+        <div class="bg-success bg-opacity-10 rounded-3 d-flex justify-content-center align-items-center" style="width:64px; height:64px;">
+          <i class="bi bi-search text-success fs-3"></i>
         </div>
       </div>
+      <h4 class="fw-bold mb-1 text-black">Encontre a Bateria Ideal</h4>
+      <p class="text-muted mb-4">Selecione seu veículo e descubra a bateria perfeita</p>
+
+      <form id="bateriaForm" class="text-start">
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Tipo de Veículo</label>
+          <select class="form-select" id="tipo" required>
+            <option selected disabled>Selecione o tipo</option>
+            <option value="carro">Carro</option>
+            <option value="moto">Moto</option>
+          </select>
+        </div>
+
+        <div class="mb-3 d-none" id="stepMarca">
+          <label class="form-label fw-semibold">Marca</label>
+          <select class="form-select" id="marca" required>
+            <option selected disabled>Selecione a marca</option>
+          </select>
+        </div>
+
+        <div class="mb-3 d-none" id="stepModelo">
+          <label class="form-label fw-semibold">Modelo</label>
+          <select class="form-select" id="modelo" required>
+            <option selected disabled>Selecione o modelo</option>
+          </select>
+        </div>
+
+        <div class="mb-3 d-none" id="stepAno">
+          <label class="form-label fw-semibold">Ano</label>
+          <select class="form-select" id="ano" required>
+            <option selected disabled>Selecione o ano</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-success w-100 fw-semibold d-none" id="btnBuscar">
+          <i class="bi bi-search me-2"></i>Buscar Bateria Ideal
+        </button>
+      </form>
+
+      <div id="resultado" class="mt-4 d-none">
+        <hr>
+        <h5 class="fw-bold text-start text-black mb-2">Recomendação:</h5>
+        <p id="bateriaInfo" class="text-muted"></p>
+        <a id="whatsappLink" target="_blank"
+           class="btn btn-success text-white fw-semibold w-100 py-2 rounded-3 border">
+          <i class="bi bi-chat-dots me-2"></i>Solicitar Orçamento
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const tipo = document.getElementById("tipo");
+  const marca = document.getElementById("marca");
+  const modelo = document.getElementById("modelo");
+  const ano = document.getElementById("ano");
+  const stepMarca = document.getElementById("stepMarca");
+  const stepModelo = document.getElementById("stepModelo");
+  const stepAno = document.getElementById("stepAno");
+  const btnBuscar = document.getElementById("btnBuscar");
+
+  const marcas = {
+    carro: ["Toyota","Honda","Volkswagen","Ford","Chevrolet","Fiat","Hyundai","Renault","Nissan","Jeep"],
+    moto: ["Honda","Yamaha","Suzuki","Kawasaki","BMW","Harley-Davidson","Dafra"]
+  };
+
+  const modelosData = {
+    Toyota:["Corolla","Hilux","Etios","Yaris","SW4"],
+    Honda:["Civic","City","HR-V","CR-V","Fit","CG 160","Biz","Bros","XRE 300","CB 500"],
+    Volkswagen:["Gol","Polo","Virtus","T-Cross","Tiguan"],
+    Ford:["Ka","Ranger","EcoSport","Focus","Fusion"],
+    Chevrolet:["Onix","S10","Tracker","Cruze","Spin"],
+    Fiat:["Argo","Mobi","Toro","Strada","Pulse"],
+    Hyundai:["HB20","Creta","Tucson","ix35","Azera"],
+    Renault:["Sandero","Duster","Kwid","Captur","Oroch"],
+    Nissan:["Kicks","Versa","Frontier","Sentra","March"],
+    Jeep:["Renegade","Compass","Commander","Wrangler","Cherokee"],
+    Yamaha:["Factor 150","Fazer 250","MT-03","YZF-R3","Crosser"],
+    Suzuki:["GSX-S750","V-Strom 650","Hayabusa","Boulevard","Intruder"],
+    Kawasaki:["Ninja 400","Z400","Versys 650","Z900","Ninja ZX-6R"],
+    BMW:["G 310 R","F 750 GS","R 1250 GS","S 1000 RR","F 850 GS"],
+    "Harley-Davidson":["Iron 883","Street 750","Fat Boy","Road King","Sportster"],
+    Dafra:["Apache 200","NH 190","Citycom 300i","Maxsym 400i","Next 250"]
+  };
+
+  const tiposBateria = {
+    compacto: { name: "Heliar Original 45Ah", specs: "Ideal para carros compactos e médios com motor 1.0 a 1.6", amperage: "45Ah" },
+    medio: { name: "Heliar Original 60Ah", specs: "Para veículos médios com motor 1.6 a 2.0, maior durabilidade", amperage: "60Ah" },
+    "suv-medio": { name: "Heliar AGM 60Ah", specs: "Tecnologia AGM, ideal para SUVs médios com Start-Stop e alta demanda elétrica", amperage: "60Ah AGM" },
+    "suv-grande": { name: "Heliar AGM 70Ah", specs: "Alta performance para SUVs grandes, com Start-Stop e eletrônicos avançados", amperage: "70Ah AGM" },
+    picape: { name: "Heliar Frota 100Ah", specs: "Bateria reforçada para picapes e veículos de trabalho pesado", amperage: "100Ah" },
+    "moto-pequena": { name: "Heliar Moto 5Ah", specs: "Para motos de baixa cilindrada até 160cc, partida confiável", amperage: "5Ah" },
+    "moto-media": { name: "Heliar Moto 8Ah", specs: "Para motos médias de 200cc a 400cc, alta resistência a vibrações", amperage: "8Ah" },
+    "moto-grande": { name: "Heliar Moto 14Ah", specs: "Para motos de alta cilindrada acima de 500cc, máxima potência de partida", amperage: "14Ah" }
+  };
+
+  const relacao = {
+    "Toyota Etios":"compacto","Toyota Corolla":"medio","Toyota Hilux":"picape","Toyota Yaris":"compacto",
+    "Honda Civic":"medio","Honda City":"compacto","Honda HR-V":"suv-medio","Honda CR-V":"suv-grande","Honda Fit":"compacto",
+    "Volkswagen Gol":"compacto","Volkswagen Polo":"compacto","Volkswagen Virtus":"medio","Volkswagen T-Cross":"suv-medio","Volkswagen Tiguan":"suv-grande",
+    "Ford Ka":"compacto","Ford Ranger":"picape","Ford EcoSport":"suv-medio","Ford Focus":"medio","Ford Fusion":"medio",
+    "Chevrolet Onix":"compacto","Chevrolet S10":"picape","Chevrolet Tracker":"suv-medio","Chevrolet Cruze":"medio","Chevrolet Spin":"medio",
+    "Fiat Argo":"compacto","Fiat Mobi":"compacto","Fiat Toro":"picape","Fiat Strada":"picape","Fiat Pulse":"suv-medio",
+    "Hyundai HB20":"compacto","Hyundai Creta":"suv-medio","Hyundai Tucson":"suv-grande","Hyundai ix35":"suv-medio","Hyundai Azera":"medio",
+    "Renault Sandero":"compacto","Renault Duster":"suv-medio","Renault Kwid":"compacto","Renault Captur":"suv-medio","Renault Oroch":"picape",
+    "Nissan Kicks":"suv-medio","Nissan Versa":"compacto","Nissan Frontier":"picape","Nissan Sentra":"medio","Nissan March":"compacto",
+    "Jeep Renegade":"suv-medio","Jeep Compass":"suv-medio","Jeep Commander":"suv-grande","Jeep Wrangler":"suv-grande","Jeep Cherokee":"suv-grande",
+    "Honda CG 160":"moto-pequena","Honda Biz":"moto-pequena","Honda Bros":"moto-media","Honda XRE 300":"moto-media","Honda CB 500":"moto-grande",
+    "Yamaha Factor 150":"moto-pequena","Yamaha Fazer 250":"moto-media","Yamaha MT-03":"moto-media","Yamaha YZF-R3":"moto-media","Yamaha Crosser":"moto-media",
+    "Suzuki GSX-S750":"moto-grande","Suzuki V-Strom 650":"moto-grande","Suzuki Hayabusa":"moto-grande","Suzuki Boulevard":"moto-grande","Suzuki Intruder":"moto-media",
+    "Kawasaki Ninja 400":"moto-media","Kawasaki Z400":"moto-media","Kawasaki Versys 650":"moto-grande","Kawasaki Z900":"moto-grande","Kawasaki Ninja ZX-6R":"moto-grande",
+    "BMW G 310 R":"moto-media","BMW F 750 GS":"moto-grande","BMW R 1250 GS":"moto-grande","BMW S 1000 RR":"moto-grande","BMW F 850 GS":"moto-grande",
+    "Harley-Davidson Iron 883":"moto-grande","Harley-Davidson Street 750":"moto-grande","Harley-Davidson Fat Boy":"moto-grande","Harley-Davidson Road King":"moto-grande","Harley-Davidson Sportster":"moto-grande",
+    "Dafra Apache 200":"moto-media","Dafra NH 190":"moto-pequena","Dafra Citycom 300i":"moto-media","Dafra Maxsym 400i":"moto-media","Dafra Next 250":"moto-media"
+  };
+
+  // Preencher anos
+  anos = Array.from({ length: 30 }, (_, i) => new Date().getFullYear() - i);
+  anos.forEach(a => ano.insertAdjacentHTML("beforeend", `<option>${a}</option>`));
+
+  // Mostrar próximo passo
+  tipo.addEventListener("change", () => {
+    stepMarca.classList.remove("d-none");
+    marca.innerHTML = `<option selected disabled>Selecione a marca</option>`;
+    marcas[tipo.value].forEach(m => marca.insertAdjacentHTML("beforeend", `<option>${m}</option>`));
+  });
+
+  marca.addEventListener("change", () => {
+    stepModelo.classList.remove("d-none");
+    modelo.innerHTML = `<option selected disabled>Selecione o modelo</option>`;
+    modelosData[marca.value].forEach(m => modelo.insertAdjacentHTML("beforeend", `<option>${m}</option>`));
+  });
+
+  modelo.addEventListener("change", () => stepAno.classList.remove("d-none"));
+  ano.addEventListener("change", () => btnBuscar.classList.remove("d-none"));
+
+  // Buscar bateria
+  document.getElementById("bateriaForm").addEventListener("submit", e => {
+    e.preventDefault();
+    const tipoV = tipo.value;
+    const marcaV = marca.value;
+    const modeloV = modelo.value;
+    const anoV = ano.value;
+
+    const chave = `${marcaV} ${modeloV}`;
+    const categoria = relacao[chave];
+    const bateria = tiposBateria[categoria] || (tipoV === "carro" ? tiposBateria.medio : tiposBateria["moto-media"]);
+
+    document.getElementById("resultado").classList.remove("d-none");
+    document.getElementById("bateriaInfo").innerText = `${bateria.name} (${bateria.amperage}) - ${bateria.specs}`;
+
+    const msg = `Olá! Gostaria de saber mais sobre a bateria ideal para meu ${tipoV} ${marcaV} ${modeloV} ${anoV}.`;
+    document.getElementById("whatsappLink").href = `https://wa.me/5584999312759?text=${encodeURIComponent(msg)}`;
+  });
+</script>
+
 
       <div class="container my-5">
         <div class="row justify-content-center g-4">
