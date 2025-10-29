@@ -277,13 +277,24 @@ h6 {
   }
 
   .header .btn-getstarted.order-3 {
-    order: 2;
+    order: 3;
     margin: 0 15px 0 0;
     padding: 6px 15px;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
   }
 
   .header .navmenu.order-2 {
-    order: 3;
+    order: 2;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  
+  .header .navmenu.order-2 .mobile-nav-toggle {
+    display: flex;
+    align-items: center;
   }
 }
 
@@ -409,6 +420,7 @@ h6 {
     margin-right: 10px;
     cursor: pointer;
     transition: color 0.3s;
+    position: relative;
   }
 
   .navmenu {
@@ -1146,6 +1158,12 @@ section,
 .stats {
   padding-top: 0;
   background-color: transparent;
+}
+
+@media (max-width: 768px) {
+  .stats {
+    margin-top: 40px;
+  }
 }
 
 .stats .stats-item {
