@@ -1258,6 +1258,24 @@ section,
   transition: ease-in-out 0.3s;
 }
 
+.battery-box {
+  border: 2px solid #10bc69;
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: 0px 6px 18px rgba(16, 188, 105, 0.15);
+  transition: all 0.25s ease-in-out;
+}
+
+.battery-box:hover {
+  transform: translateY(-3px);
+  box-shadow: 0px 10px 25px rgba(16, 188, 105, 0.25);
+}
+
+
+.services .battery-list i{
+  color: #10bc69;
+}
+
 .services .service-item h3 {
   font-weight: 700;
   margin: 10px 0 15px 0;
