@@ -612,6 +612,31 @@ h6 {
   padding-top: 50px;
 }
 
+@media (max-width: 768px) {
+  .footer .footer-top .row {
+    text-align: center;
+  }
+  
+  .footer .footer-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .footer .footer-links h5 {
+    margin-bottom: 10px;
+  }
+  
+  .footer .footer-links a {
+    display: block;
+  }
+  
+  .footer .footer-links p {
+    display: block;
+  }
+}
+
 .footer .social-links a {
   display: flex;
   align-items: center;
@@ -1005,6 +1030,13 @@ section,
   .hero .btn-get-started,
   .hero .btn-watch-video {
     font-size: 13px;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 768px) {
+  .btn-get-started {
+    white-space: nowrap;
   }
 }
 
@@ -1594,7 +1626,7 @@ section,
 .service-item p {
   color: var(--accent-color);
   font-weight: 700;
-  font-size: 17px;
+  font-size: 22px;
 }
 
 .contact .btn-phone {
